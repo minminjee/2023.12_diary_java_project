@@ -12,3 +12,12 @@
 
 ### 시연 영상
 <img src ="https://github.com/minminjee/diary_java_project_23.12/assets/157664207/42527757-e8a1-438e-89ff-344530df7c56">
+
+
+### 기술 스택
+JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
+```
+import javax.swing.JFrame;
+
+public class DiaryADM extends JFrame implements ActionListener, MouseListener
+```

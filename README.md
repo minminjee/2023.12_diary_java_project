@@ -16,6 +16,7 @@
 
 ### 기술 스택
 * 상속 및 인터페이스 구현
+  
   JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
 ```
 import javax.swing.JFrame;
@@ -24,6 +25,7 @@ public class DiaryADM extends JFrame implements ActionListener, MouseListener
 ```
 ----
 * 객체간 주소 값 복사 구현
+  
 클래스간의 값 전달시 주소값 복사로 구현하였다. 예를 들어 오늘의 감정을 고른 후 그 이미지와 함께 페이지로 넘어가 텍스트를 작성해야한다. 
 ```
 public class SelectDayGui extends JFrame implements ActionListener, MouseListener {
@@ -43,6 +45,7 @@ public class SelectDayGui extends JFrame implements ActionListener, MouseListene
 ```
 -----
 * 싱글톤으로 객체 사용하기
+  
 객체를 여러 곳에서 만들게 되면 DAO에서 가져온 db가 계속 중복되거나 데이터가 변경되는 시점을 알 수 가 없다
 
 그래서 DAO 단은 객체를 한번만 만들고 다른 곳에서는 메서드 호출을 통해 구현 받도록 만들었다.

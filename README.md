@@ -50,7 +50,7 @@ public class SelectDayGui extends JFrame implements ActionListener, MouseListene
 
 그래서 DAO 단은 객체를 한번만 만들고 다른 곳에서는 메서드 호출을 통해 구현 받도록 만들었다.
 
-**문제**
+<**문제**>
 
 아무 이유 없이 싱글 톤이 좋다고 만들 필요는 없다
 

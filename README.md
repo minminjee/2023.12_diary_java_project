@@ -21,7 +21,7 @@ import javax.swing.JFrame;
 
 public class DiaryADM extends JFrame implements ActionListener, MouseListener
 ```
-
+----
 * 클래스간의 값 전달시 주소값 복사로 구현하였다. 예를 들어 오늘의 감정을 고른 후 그 이미지와 함께 페이지로 넘어가 텍스트를 작성해야한다. 
 ```
 public class SelectDayGui extends JFrame implements ActionListener, MouseListener {
@@ -39,7 +39,7 @@ public class SelectDayGui extends JFrame implements ActionListener, MouseListene
 		nowMood.setNum(ddto.getMoodNum());
 	}
 ```
-
+-----
 * 싱글톤으로 객체 사용하기
 객체를 여러 곳에서 만들게 되면 DAO에서 가져온 db가 계속 중복되거나 데이터가 변경되는 시점을 알 수 가 없다
 

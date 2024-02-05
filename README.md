@@ -15,9 +15,59 @@
 
 
 ### 기술 스택
-JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
+##### JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
 ```
 import javax.swing.JFrame;
 
 public class DiaryADM extends JFrame implements ActionListener, MouseListener
 ```
+
+##### 클래스간의 값 전달시 주소값 복사로 구현하였다. 예를 들어 오늘의 감정을 고른 후 그 이미지와 함께 페이지로 넘어가 텍스트를 작성해야한다. 
+```
+public class SelectDayGui extends JFrame implements ActionListener, MouseListener {
+	// 하루 일기 작성 하는 클래스
+	Scanner in = new Scanner(System.in);
+	DiaryDAO ddao = DiaryDAO.getInstance();
+	DiaryDTO ddto = null;
+	Today today = new Today();
+	String todayDB = String.valueOf(today.getYear()) + "/" + (today.getMonthV()) + "/" + (today.getDate());
+
+	public SelectDayGui(DiaryDTO ddto) {
+		this.ddto = ddto; // 감정 고르기에서 선택한 이미지!
+		nowMood = new Mood();
+		nowMood.setMood(ddto.getMood());
+		nowMood.setNum(ddto.getMoodNum());
+	}
+```
+
+#### 싱글톤으로 객체 사용하기
+객체를 여러 곳에서 만들게 되면 DAO에서 가져온 db가 계속 중복되거나 데이터가 변경되는 시점을 알 수 가 없다
+
+그래서 DAO 단은 객체를 한번만 만들고 다른 곳에서는 메서드 호출을 통해 구현 받도록 만들었다.
+
+**문제**
+
+아무 이유 없이 싱글 톤이 좋다고 만들 필요는 없다
+
+이번 프로젝트에서 메인 페이지는 내용이 업데이트 되면 변경된 정보를 가진 객체가 생성되어야 했다. 
+
+그런데 계속 같은 주소 값을 갖고 있다면 내용이 바뀌지 않기 때문에 싱글톤으로 하면 안됨 .
+
+```
+public class DiaryDAO { // 일정들 db저장 및 가지고 오는 클래스
+
+	String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	String username = "system";
+	String pass = "1111";
+	Connection conn = null;
+	// 싱글톤 사용하기
+	public static DiaryDAO self = null;
+
+	public static DiaryDAO getInstance() {
+		if (self == null) {
+			self = new DiaryDAO();
+		}
+		return self;
+	}
+```
+

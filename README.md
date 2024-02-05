@@ -15,14 +15,16 @@
 
 
 ### 기술 스택
-* JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
+* 상속 및 인터페이스 구현
+  JFrame을 상속 받아서 사용했으며 listener 등은 여러개가 필요하여서 인터페이스로 구현받아서 재정의하여 사용하였다.
 ```
 import javax.swing.JFrame;
 
 public class DiaryADM extends JFrame implements ActionListener, MouseListener
 ```
 ----
-* 클래스간의 값 전달시 주소값 복사로 구현하였다. 예를 들어 오늘의 감정을 고른 후 그 이미지와 함께 페이지로 넘어가 텍스트를 작성해야한다. 
+* 객체간 주소 값 복사 구현
+클래스간의 값 전달시 주소값 복사로 구현하였다. 예를 들어 오늘의 감정을 고른 후 그 이미지와 함께 페이지로 넘어가 텍스트를 작성해야한다. 
 ```
 public class SelectDayGui extends JFrame implements ActionListener, MouseListener {
 	// 하루 일기 작성 하는 클래스
